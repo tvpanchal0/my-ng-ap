@@ -7,7 +7,7 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptorService } from './auth/interceptor/token-interceptor.service';
+import { TokenInterceptor } from './auth/interceptor/token-interceptor.service';
 import { AuthService } from './auth/services/auth.service';
 import { HttpClientModule } from '@angular/common/http'; 
 
@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     AuthService,
     provideClientHydration(),
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
